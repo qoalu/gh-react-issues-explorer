@@ -1,8 +1,6 @@
 import React from 'react';
 
-type IssueDetailProps = {};
-
-function IssueDetails(props: IssueDetailProps) {
+function IssueDetails() {
   return <div />;
 }
 

@@ -9,11 +9,10 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql,
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { relayStylePagination } from '@apollo/client/utilities';
 
 const httpLink = createHttpLink({
   uri: 'https://api.github.com/graphql',
@@ -33,7 +32,15 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      GetRepositoryIssues: {
+        fields: {
+          nodes: relayStylePagination(),
+        },
+      },
+    },
+  }),
 });
 
 ReactDOM.render(
