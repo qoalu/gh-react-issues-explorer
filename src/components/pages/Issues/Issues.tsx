@@ -68,7 +68,7 @@ function Issues() {
   };
 
   const handleFetchPrev = () => {
-    setCursors([pageInfo?.endCursor, undefined]);
+    setCursors([pageInfo?.startCursor, undefined]);
   };
 
   const refreshWithNewFilters = ({
