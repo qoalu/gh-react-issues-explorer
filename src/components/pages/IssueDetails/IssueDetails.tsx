@@ -32,7 +32,7 @@ function IssueDetails() {
       <Heading>Issue Details</Heading>
       {loading && (
         <>
-          Loading...
+          Loading data...
           <Spinner />
         </>
       )}
@@ -52,7 +52,7 @@ function IssueDetails() {
                 color='gray.900'
               >
                 {comments.map((comment: Maybe<IssueCommentEdge>) => (
-                  <div>
+                  <div key={comment?.node?.id}>
                     <Text fontWeight={'bold'}>
                       {comment?.node?.author?.login}
                     </Text>
