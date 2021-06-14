@@ -39,6 +39,11 @@ const client = new ApolloClient({
           nodes: relayStylePagination(),
         },
       },
+      SearchRepositoryIssues: {
+        fields: {
+          nodes: relayStylePagination(),
+        },
+      },
     },
   }),
 });
