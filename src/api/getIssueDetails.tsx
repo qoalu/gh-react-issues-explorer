@@ -21,6 +21,13 @@ export const GET_ISSUE_DETAILS = gql`
           }
         }
       }
+      ... on PullRequest {
+        __typename
+        id
+        title
+        url
+        body
+      }
     }
   }
 `;
