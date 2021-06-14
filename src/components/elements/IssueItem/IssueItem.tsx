@@ -1,4 +1,4 @@
-import { Box, Heading, Link, Text } from '@chakra-ui/react';
+import { Box, Heading, HStack, Link, Stack, Text } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { Issue } from '../../../generated/graphql';
@@ -29,22 +29,24 @@ export const IssueItem = ({ issue }: IssueProps) => {
             <Heading size={'sm'}>{issue.title}</Heading>
             <Text fontSize={'sm'}>{issue.body.substr(0, 200)}</Text>
           </Box>
-          <Link
-            as={NavLink}
-            to={`/issues/${issue.id}`}
-            color={'green.500'}
-            fontSize={'xs'}
-          >
-            View Issue here
-          </Link>
-          <Link
-            href={issue.url}
-            color={'blue.500'}
-            fontSize={'xs'}
-            target={'_blank'}
-          >
-            View Issue on Github
-          </Link>
+          <HStack spacing={'16px'}>
+            <Link
+              as={NavLink}
+              to={`/issues/${issue.id}`}
+              color={'green.500'}
+              fontSize={'xs'}
+            >
+              View Issue here
+            </Link>
+            <Link
+              href={issue.url}
+              color={'blue.500'}
+              fontSize={'xs'}
+              target={'_blank'}
+            >
+              View Issue on Github
+            </Link>
+          </HStack>
         </Box>
       </Box>
     </div>

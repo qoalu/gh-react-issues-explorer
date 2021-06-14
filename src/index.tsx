@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
 
 import {
   ApolloClient,
@@ -13,6 +12,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { relayStylePagination } from '@apollo/client/utilities';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const httpLink = createHttpLink({
   uri: 'https://api.github.com/graphql',
@@ -50,11 +51,13 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </ChakraProvider>
+    <ApolloProvider client={client}>
+      <ChakraProvider>
+        <Router>
+          <App />
+        </Router>
+      </ChakraProvider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
