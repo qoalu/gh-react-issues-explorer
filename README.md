@@ -18,6 +18,9 @@
 - - [ ] When data is there, issues are shown in a lis
 - - [ ] When loading failed and no data is there,  error is shown
 
+### Required to run:
+Localstorage "token" value with a valid Github access token
+
 In the project directory, you can run:
 
 ### `yarn start`
