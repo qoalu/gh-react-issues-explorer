@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { searchRepositoryIssues } from '../../../api/searchRepositoryIssues';
 import { GET_ISSUE_DETAILS } from '../../../api/getIssueDetails';
 import { Issue, IssueCommentEdge, Maybe } from '../../../generated/graphql';
 import { IssueItem } from '../../elements/IssueItem/IssueItem';
-import { Alert, Box, Heading, Text } from '@chakra-ui/react';
+import { Alert, Box, Heading, Spinner, Text } from '@chakra-ui/react';
 
 type ParamsType = {
   id: string;
@@ -34,6 +33,12 @@ function IssueDetails() {
         <>
           <IssueItem issue={data.node} />
           <Heading>Comments {comments.length}</Heading>
+          {loading && (
+            <>
+              Loading...
+              <Spinner />
+            </>
+          )}
           {comments.length > 0 && (
             <>
               <Box

@@ -1,13 +1,11 @@
 import { Box, Heading, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 import { Issue } from '../../../generated/graphql';
-import { useRouteMatch } from 'react-router-dom';
 /* eslint-disable no-underscore-dangle */
 type IssueProps = {
   issue: Issue;
 };
 export const IssueItem = ({ issue }: IssueProps) => {
-  const { path, url } = useRouteMatch();
   return (
     <div>
       <Box
