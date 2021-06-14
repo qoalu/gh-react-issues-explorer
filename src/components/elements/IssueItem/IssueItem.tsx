@@ -1,10 +1,13 @@
 import { Box, Heading, Link, Text } from '@chakra-ui/react';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { Issue } from '../../../generated/graphql';
 /* eslint-disable no-underscore-dangle */
+
 type IssueProps = {
   issue: Issue;
 };
+
 export const IssueItem = ({ issue }: IssueProps) => {
   return (
     <div>
@@ -27,13 +30,19 @@ export const IssueItem = ({ issue }: IssueProps) => {
             <Text fontSize={'sm'}>{issue.body.substr(0, 200)}</Text>
           </Box>
           <Link
-            href={`/issues/${issue.id}`}
+            as={NavLink}
+            to={`/issues/${issue.id}`}
             color={'green.500'}
             fontSize={'xs'}
           >
             View Issue here
           </Link>
-          <Link href={issue.url} color={'blue.500'} fontSize={'xs'}>
+          <Link
+            href={issue.url}
+            color={'blue.500'}
+            fontSize={'xs'}
+            target={'_blank'}
+          >
             View Issue on Github
           </Link>
         </Box>

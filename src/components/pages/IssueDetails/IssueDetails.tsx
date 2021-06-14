@@ -25,20 +25,22 @@ function IssueDetails() {
     }
   );
 
-  const comments: Maybe<IssueCommentEdge>[] = data?.node.comments.edges || [];
+  const comments: Maybe<IssueCommentEdge>[] = data?.node?.comments?.edges || [];
 
   return (
     <div>
+      <Heading>Issue Details</Heading>
+      {loading && (
+        <>
+          Loading...
+          <Spinner />
+        </>
+      )}
       {data && (
         <>
           <IssueItem issue={data.node} />
           <Heading>Comments {comments.length}</Heading>
-          {loading && (
-            <>
-              Loading...
-              <Spinner />
-            </>
-          )}
+
           {comments.length > 0 && (
             <>
               <Box

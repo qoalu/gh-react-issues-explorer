@@ -30,14 +30,15 @@ type ResponseData = {
 
 type Cursor = Maybe<string> | undefined;
 
+const LIMIT_PER_PAGE: number = 5;
+
 function Issues() {
-  const [limit] = useState<number>(2);
   const [filters, setFilters] = useState<{
     states: IssueStates;
     content: Maybe<string>;
   }>({
     states: undefined,
-    content: 'global DOM event',
+    content: '',
   });
   const [[before, after], setCursors] = useState<[Cursor, Cursor]>([
     undefined,
@@ -50,8 +51,8 @@ function Issues() {
       variables: {
         before,
         after,
-        first: !before ? limit : null,
-        last: before ? limit : null,
+        first: !before ? LIMIT_PER_PAGE : null,
+        last: before ? LIMIT_PER_PAGE : null,
       },
     }
   );
